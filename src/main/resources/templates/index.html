@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css} " />
+    <link th:rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+
+<body>
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <h1>Todo Planner</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+            </ul>
+            <form class="d-flex"
+                  action="#"
+                  th:action="@{/todos/new}"
+                  th:object="${newTodo}"
+                  method="POST"
+            >
+                <input class="form-control"
+                       id="description"
+                       name="description"
+                       th:field="*{description}"
+                       placeholder="new todo description"
+                       required
+                       type="text">
+                <button class="btn btn-outline-success" type="submit">Add</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm">
+            <h3 class="text-center">Backlog</h3>
+            <ul class="todo-list">
+                <li class="border border-info" th:each="todo : ${backlog}" th:onclick="'javascript:onHandleListItemClick(' + ${todo.id} + ')'">
+                    <span th:text="${todo.id}">id</span>: <span th:text="${todo.description}"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm">
+            <h3 class="text-center">Doing</h3>
+            <ul class="todo-list">
+                <li class="border border-warning" th:each="todo : ${doing}" th:onclick="'javascript:onHandleListItemClick(' + ${todo.id} + ')'">
+                    <span th:text="${todo.id}">id</span>: <span th:text="${todo.description}"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm">
+            <h3 class="text-center">Done</h3>
+            <ul class="todo-list">
+                <li class="border border-success" th:each="todo : ${done}" th:onclick="'javascript:onHandleListItemClick(' + ${todo.id} + ')'">
+                    <span th:text="${todo.id}">id</span>: <span th:text="${todo.description}"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<script th:src="@{/webjars/jquery/3.7.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.min.js}"></script>
+<script th:src="@{/app.js}"></script>
+
+</body>
+</html>
