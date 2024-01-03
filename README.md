@@ -3,7 +3,7 @@
 This is a beginner friendly fullstack application which uses Java Spring Boot
 and Thymeleaf.
 
-![spring boot todo planner application](./screenshot.png)
+![spring boot todo planner application](./screenshot.gif)
 
 This is an ENTIRE application for Java Spring Boot built using:
 - Spring Boot 3.2.1
