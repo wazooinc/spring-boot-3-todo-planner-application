@@ -21,9 +21,9 @@ public class SeedData implements CommandLineRunner {
         List<Todo> todos = todoService.getAll();
         if (todos.isEmpty()) {
 
-            Todo todo1 = Todo.builder().description("todo 1 in backlog").status(StatusType.BACKLOG).build();
-            Todo todo2 = Todo.builder().description("todo 2 in doing").status(StatusType.DOING).build();
-            Todo todo3 = Todo.builder().description("todo 3 in done").status(StatusType.DONE).build();
+            Todo todo1 = Todo.builder().description("edit tutorial").status(StatusType.BACKLOG).build();
+            Todo todo2 = Todo.builder().description("shoot tutorial").status(StatusType.DOING).build();
+            Todo todo3 = Todo.builder().description("tutorial script").status(StatusType.DONE).build();
 
             todoService.save(todo1);
             todoService.save(todo2);
